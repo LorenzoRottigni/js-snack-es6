@@ -4,16 +4,21 @@ const bicycles = [
     {'name' : 'Deda Elementi' , 'weight' : 6.2}
 ];
 
+const lowestWeightBicycleOutput = document.querySelector('h1');
 
 function getLowest(bicycles){
-    var minWeight = 100;
+    var lowestWeightBicycle = {'name' : '' ,'weight': 100}
     for (let i = 0; i < bicycles.length; i++) {
-        const bicycleWeight = bicycles[i].weight;
-        if(bicycleWeight < minWeight)
-            minWeight = bicycleWeight;
+        const bicycle = bicycles[i];
+        const {name} = bicycle
+        const {weight} = bicycle
+        if(weight < lowestWeightBicycle.weight)
+            lowestWeightBicycle.name = name;
+            lowestWeightBicycle.weight = weight;
     }
-    return minWeight;
+    return lowestWeightBicycle;
 }
 
+lowestWeightBicycle = getLowest(bicycles);
 
-document.write(getLowest(bicycles));
+lowestWeightBicycleOutput.textContent = `The lowest weight bicycle is: ${lowestWeightBicycle.name} with weight: ${lowestWeightBicycle.weight}`
